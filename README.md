@@ -4,6 +4,11 @@
 
 [![NPM](https://img.shields.io/npm/v/on-react-marquee.svg)](https://www.npmjs.com/package/on-react-marquee) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Why should you use `on-react-marquee`
+- Filling gaps functionality
+- No state to cause re-rendering
+- Marquee functionality fully written in CSS
+
 ## Install
 
 ```bash
@@ -48,12 +53,11 @@ const Example = ()  => {
 | play                     | Boolean               | `true`        | to play or pause the animation               |
 | fillGaps                 | Boolean               | `true`        | clones the marque to fit screen without gaps |
 | onAnimationCycleComplete | Func                  | `null`        | callback function for each cycle             |
-|                          |                       |               |                                              |
-|                          |                       |               |                                              |
-|                          |                       |               |                                              |
-|                          |                       |               |                                              |
-|                          |                       |               |                                              |
-|                          |                       |               |                                              |
+
+
+## TODOS
+- Add more tests
+- Update DOM on resizing
 
 ## License
 
