@@ -38,18 +38,22 @@ const Example = ()  => {
 }
 ```
 
-```
-Property                             | type                      | Default Value         | Description
--------------------------------------|---------------------------|-----------------------| ------------------
-children                            | ReactNode                  | null                  | wrapper classname
-speed                               | Number                     | 80                    | pixels / second
-pauseOnHover                        | Boolean                    | false                 | to pause on hover
-direction                           | `'left'`or `'right'`       | left                  | direction of marquee
-loop                                | Number or String           | infinite              | number of times marquee plays
-play                                | Boolean                    | `true`                | to play or pause the animation
-fillGaps                            | Boolean                    | `true`                | clones the marque to fit screen without gaps
-onAnimationCycleComplete            | Func                       | `null`                | callback function for each cycle
-```
+| Property                 | type                  | Default Value | Description                                  |
+|--------------------------|-----------------------|---------------|----------------------------------------------|
+| children                 | ReactNode             | `null`        | nodes                                        |
+| speed                    | Number                | `80`          | pixels / second                              |
+| pauseOnHover             | Boolean               | `false`       | to pause on hover                            |
+| direction                | `'left'` or `'right'` | `left`        | direction of marquee                         |
+| loop                     | Number or String      | `infinite`    | number of times marquee plays                |
+| play                     | Boolean               | `true`        | to play or pause the animation               |
+| fillGaps                 | Boolean               | `true`        | clones the marque to fit screen without gaps |
+| onAnimationCycleComplete | Func                  | `null`        | callback function for each cycle             |
+|                          |                       |               |                                              |
+|                          |                       |               |                                              |
+|                          |                       |               |                                              |
+|                          |                       |               |                                              |
+|                          |                       |               |                                              |
+|                          |                       |               |                                              |
 
 ## License
 
