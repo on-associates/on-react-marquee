@@ -7,12 +7,14 @@
 
 .marqueeContent {
   display: flex;
-  position: relative;
-  will-change: transform;
   animation: marquee var(--marquee-duration) linear 0s infinite;
   animation-play-state: var(--marquee-play);
   animation-delay: var(--marquee-delay);
   animation-direction: var(--marquee-direction);
+}
+
+.marqueeContent.fullWidth {
+  min-width: 100%;
 }
 
 .marquee:hover .marqueeContent {

@@ -1,6 +1,6 @@
 var React = require('react');
 
-var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B"};
+var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B","fullWidth":"_styles-module__fullWidth__1aqaS"};
 
 var Marquee = function Marquee(_ref) {
   var children = _ref.children,
@@ -51,9 +51,11 @@ var Marquee = function Marquee(_ref) {
     className: classNames,
     ref: containerRef
   }, React.createElement("div", {
-    className: styles.marqueeContent,
+    className: styles.marqueeContent + " " + (!fillGaps && styles.fullWidth),
     ref: marqueeRef,
     onAnimationIteration: onAnimationCycleComplete
+  }, children), !fillGaps && React.createElement("div", {
+    className: styles.marqueeContent + " " + styles.fullWidth
   }, children));
 };
 

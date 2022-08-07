@@ -59,12 +59,17 @@ const Marquee = ({
   return (
     <div className={classNames} ref={containerRef}>
       <div
-        className={styles.marqueeContent}
+        className={`${styles.marqueeContent} ${!fillGaps && styles.fullWidth}`}
         ref={marqueeRef}
         onAnimationIteration={onAnimationCycleComplete}
       >
         {children}
       </div>
+      {!fillGaps && (
+        <div className={`${styles.marqueeContent} ${styles.fullWidth}`}>
+          {children}
+        </div>
+      )}
     </div>
   )
 }

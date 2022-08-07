@@ -7,8 +7,6 @@
 
 ._styles-module__marqueeContent__2FT6B {
   display: flex;
-  position: relative;
-  will-change: transform;
   -webkit-animation: _styles-module__marquee__2bxe3 var(--marquee-duration) linear 0s infinite;
           animation: _styles-module__marquee__2bxe3 var(--marquee-duration) linear 0s infinite;
   -webkit-animation-play-state: var(--marquee-play);
@@ -17,6 +15,10 @@
           animation-delay: var(--marquee-delay);
   -webkit-animation-direction: var(--marquee-direction);
           animation-direction: var(--marquee-direction);
+}
+
+._styles-module__marqueeContent__2FT6B._styles-module__fullWidth__1aqaS {
+  min-width: 100%;
 }
 
 ._styles-module__marquee__2bxe3:hover ._styles-module__marqueeContent__2FT6B {

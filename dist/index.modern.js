@@ -1,6 +1,6 @@
 import { useRef, useEffect, createElement } from 'react';
 
-var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B"};
+var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B","fullWidth":"_styles-module__fullWidth__1aqaS"};
 
 const Marquee = ({
   children,
@@ -45,9 +45,11 @@ const Marquee = ({
     className: classNames,
     ref: containerRef
   }, createElement("div", {
-    className: styles.marqueeContent,
+    className: `${styles.marqueeContent} ${!_fillGaps && styles.fullWidth}`,
     ref: marqueeRef,
     onAnimationIteration: onAnimationCycleComplete
+  }, children), !_fillGaps && createElement("div", {
+    className: `${styles.marqueeContent} ${styles.fullWidth}`
   }, children));
 };
 
