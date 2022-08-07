@@ -1,0 +1,29 @@
+.marquee {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marqueeContent {
+  display: flex;
+  position: relative;
+  will-change: transform;
+  animation: marquee var(--marquee-duration) linear 0s infinite;
+  animation-play-state: var(--marquee-play);
+  animation-delay: var(--marquee-delay);
+  animation-direction: var(--marquee-direction);
+}
+
+.marquee:hover .marqueeContent {
+  animation-play-state: var(--pause-on-hover);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
