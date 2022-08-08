@@ -57,7 +57,7 @@ const Example = ()  => {
 
 ## TODOS
 - Add more tests
-- Update DOM on resizing
+- Better documentation
 
 ## License
 

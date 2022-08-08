@@ -18,7 +18,7 @@
 }
 
 ._styles-module__marqueeContent__2FT6B._styles-module__fullWidth__1aqaS {
-  min-width: 100%;
+  /* min-width: 100%; */
 }
 
 ._styles-module__marquee__2bxe3:hover ._styles-module__marqueeContent__2FT6B {
@@ -42,4 +42,9 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+._styles-module__noAnimation__Mhukv ._styles-module__marqueeContent__2FT6B{
+  -webkit-animation: none;
+          animation: none;
 }

@@ -1,6 +1,6 @@
 var React = require('react');
 
-var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B","fullWidth":"_styles-module__fullWidth__1aqaS"};
+var styles = {"marquee":"_styles-module__marquee__2bxe3","marqueeContent":"_styles-module__marqueeContent__2FT6B","fullWidth":"_styles-module__fullWidth__1aqaS","noAnimation":"_styles-module__noAnimation__Mhukv"};
 
 var Marquee = function Marquee(_ref) {
   var children = _ref.children,
@@ -19,39 +19,75 @@ var Marquee = function Marquee(_ref) {
       onAnimationCycleComplete = _ref.onAnimationCycleComplete,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className;
+
+  var _React$useState = React.useState(false),
+      isMounted = _React$useState[0],
+      setIsMounted = _React$useState[1];
+
   var containerRef = React.useRef(null);
   var marqueeRef = React.useRef(null);
   React.useEffect(function () {
+    if (!isMounted) {
+      return;
+    }
+
     var containerEl = containerRef.current;
     var marqueeEl = marqueeRef.current;
-    var containerWidth = containerEl.clientWidth;
-    var marqueeWidth = marqueeEl.clientWidth;
 
-    var setFillGaps = function setFillGaps() {
-      var loopCount = Math.ceil(containerEl.clientWidth / marqueeEl.clientWidth);
+    var init = function init() {
+      var containerWidth = containerEl.clientWidth;
+      var marqueeWidth = marqueeEl.clientWidth;
 
-      for (var index = 0; index < loopCount; index++) {
-        containerEl.appendChild(containerEl.children[0].cloneNode(true));
+      var setFillGaps = function setFillGaps() {
+        var loopCount = Math.ceil(containerEl.clientWidth / marqueeEl.clientWidth);
+
+        while (containerEl.children.length > 1) {
+          containerEl.removeChild(containerEl.lastChild);
+        }
+
+        for (var index = 0; index < loopCount; index++) {
+          containerEl.appendChild(containerEl.children[0].cloneNode(true));
+        }
+      };
+
+      var duration = marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
+      containerEl.style.setProperty('--marquee-duration', duration + "s");
+      containerEl.style.setProperty('--marquee-pause-on-hover', pauseOnHover ? 'paused' : 'running');
+      containerEl.style.setProperty('--marquee-direction', direction === 'left' ? 'normal' : 'reverse');
+      containerEl.style.setProperty('--marquee-loop', loop);
+      containerEl.style.setProperty('--marquee-play', play ? 'running' : 'paused');
+
+      if (fillGaps) {
+        setFillGaps();
       }
     };
 
-    var duration = marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
-    containerEl.style.setProperty('--marquee-duration', duration + "s");
-    containerEl.style.setProperty('--marquee-pause-on-hover', pauseOnHover ? 'paused' : 'running');
-    containerEl.style.setProperty('--marquee-direction', direction === 'left' ? 'normal' : 'reverse');
-    containerEl.style.setProperty('--marquee-loop', loop);
-    containerEl.style.setProperty('--marquee-play', play ? 'running' : 'paused');
+    init();
+    var resizeTimer;
 
-    if (fillGaps) {
-      setFillGaps();
-    }
+    var onResize = function onResize() {
+      init();
+      containerEl.classList.add(styles.noAnimation);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        containerEl.classList.remove(styles.noAnimation);
+      }, 300);
+    };
+
+    window.addEventListener('resize', onResize);
+    return function () {
+      return window.removeEventListener('resize', onResize);
+    };
+  }, [isMounted]);
+  React.useEffect(function () {
+    setIsMounted(true);
   }, []);
   var classNames = [styles.marquee, className].join(' ');
   return React.createElement("div", {
     className: classNames,
     ref: containerRef
   }, React.createElement("div", {
-    className: styles.marqueeContent + " " + (!fillGaps && styles.fullWidth),
+    className: styles.marqueeContent + " " + (!fillGaps ? styles.fullWidth : ''),
     ref: marqueeRef,
     onAnimationIteration: onAnimationCycleComplete
   }, children), !fillGaps && React.createElement("div", {

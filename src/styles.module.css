@@ -14,7 +14,7 @@
 }
 
 .marqueeContent.fullWidth {
-  min-width: 100%;
+  /* min-width: 100%; */
 }
 
 .marquee:hover .marqueeContent {
@@ -28,4 +28,8 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.noAnimation .marqueeContent{
+  animation: none;
 }
