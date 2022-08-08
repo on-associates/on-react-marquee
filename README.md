@@ -61,4 +61,4 @@ const Example = ()  => {
 
 ## License
 
-MIT © [cemarguvanli](https://github.com/cemarguvanli)
+MIT ©
